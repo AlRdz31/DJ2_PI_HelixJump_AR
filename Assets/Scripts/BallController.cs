@@ -10,7 +10,14 @@ public float impulseForce = 3f;
 
 private bool ignoreNextcollision;
 
-private void OnCollisionEnter (Collision collision)
+private Vector3 startPosition;
+
+    private void Start()
+    {
+        startPosition = transform.position;
+    }
+
+    private void OnCollisionEnter (Collision collision)
     {
 
         if (ignoreNextcollision)
@@ -18,7 +25,11 @@ private void OnCollisionEnter (Collision collision)
             return;
         }
 
-        GameManager.singleton.AddScore(1);
+        DeathPart deathPart = collision.transform.GetComponent<DeathPart>();
+        if(deathPart)
+        {
+            GameManager.singleton.RestartLevel();
+        }
 
         rb.linearVelocity = Vector3.zero;
         rb.AddForce(Vector3.up*impulseForce,ForceMode.Impulse);
@@ -31,6 +42,11 @@ private void OnCollisionEnter (Collision collision)
     private void AllowNextCollision()
     {
         ignoreNextcollision = false;
+    }
+
+    public void ResetBall()
+    {
+        transform.position = startPosition;
     }
 
 }

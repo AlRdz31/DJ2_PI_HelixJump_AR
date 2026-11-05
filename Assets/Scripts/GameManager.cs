@@ -36,7 +36,9 @@ public void NextLevel()
 
 public void RestartLevel()
     {
-        
+        Debug.Log("Restart");
+        singleton.currentScore = 0;
+        FindAnyObjectByType<BallController>().ResetBall();
     }
 
 public void AddScore(int scoreToAdd)

@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5960953695094771983
 Transform:
   m_ObjectHideFlags: 0
@@ -1026,6 +1026,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1728750584767900787}
+  - component: {fileID: 1028977240703829544}
+  - component: {fileID: 5580987727054422102}
   m_Layer: 0
   m_Name: HelixLevel
   m_TagString: Untagged
@@ -1061,6 +1063,39 @@ Transform:
   - {fileID: 5270818223967383228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1028977240703829544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6829434269714829011}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 0.05, z: 4}
+  m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &5580987727054422102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6829434269714829011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d33ef9067b8c4d02a0dd4a2d3efa1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PassScorePoint
 --- !u!1 &7446678382462688058
 GameObject:
   m_ObjectHideFlags: 0
