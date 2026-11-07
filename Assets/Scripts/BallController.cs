@@ -12,6 +12,15 @@ private bool ignoreNextcollision;
 
 private Vector3 startPosition;
 
+[HideInInspector]
+public int perfectPass;
+
+public float superSpeed = 8;
+
+private bool isSuperSpeedActive;
+
+public int perfectPassCount = 3;
+
     private void Start()
     {
         startPosition = transform.position;
@@ -25,10 +34,18 @@ private Vector3 startPosition;
             return;
         }
 
-        DeathPart deathPart = collision.transform.GetComponent<DeathPart>();
-        if(deathPart)
+        if (isSuperSpeedActive && !collision.transform.GetComponent<GoalController>())
         {
-            GameManager.singleton.RestartLevel();
+            Destroy(collision.transform.parent.gameObject, 0.2f);
+        }
+
+        else
+        {
+            DeathPart deathPart = collision.transform.GetComponent<DeathPart>();
+            if(deathPart)
+            {
+                GameManager.singleton.RestartLevel();
+            }
         }
 
         rb.linearVelocity = Vector3.zero;
@@ -37,6 +54,19 @@ private Vector3 startPosition;
         ignoreNextcollision = true;
         Invoke("AllowNextCollision", 0.2f);
 
+        perfectPass = 0;
+        isSuperSpeedActive = false;
+
+    }
+
+    private void Update()
+    {
+        if (perfectPass>=perfectPassCount && !isSuperSpeedActive)
+        {
+            isSuperSpeedActive = true;
+
+            rb.AddForce(Vector3.down*superSpeed, ForceMode.Impulse);
+        }
     }
 
     private void AllowNextCollision()
